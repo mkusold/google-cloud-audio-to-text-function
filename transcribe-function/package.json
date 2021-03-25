@@ -10,8 +10,8 @@
     "system-test": "mocha test/*system*test.js --timeout=600000 --exit",
     "all-test": "npm run unit-test && npm run system-test",
     "test": "npm -- run all-test",
-    "deploy": "gcloud functions deploy transcribeFile --runtime nodejs10 --trigger-resource transcriber_files --trigger-event google.storage.object.finalize",
-    "trigger-upload": "gsutil cp gcf-test.txt gs://transcriber_files"
+    "deploy": "gcloud functions deploy transcribeFile --runtime nodejs10 --trigger-resource transcriber-processed --trigger-event google.storage.object.finalize",
+    "trigger-upload": "gsutil cp gcf-test.txt gs://transcriber-processed"
   },
   "dependencies": {
     "@google-cloud/debug-agent": "^5.0.0",
@@ -19,7 +19,9 @@
     "@google-cloud/storage": "^5.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^9.1.0",
-    "music-metadata": "^7.6.4"
+    "merge-files": "^0.1.2",
+    "music-metadata": "^7.6.4",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.1.1",
